@@ -1,4 +1,4 @@
-\documentclass[fontset=none,12pt,a4paper,titlepage,UTF8]{ctexart}
+\documentclass[fontset=windows,12pt,a4paper,titlepage,UTF8]{ctexart}
 
 \usepackage{amsmath}
 \usepackage{tabularx}
@@ -6,17 +6,18 @@
 \usepackage{hyperref}
 \usepackage{subcaption}
 \usepackage{graphicx}
+\usepackage{svg}
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{makecell}
 \usepackage{siunitx}
 
-\setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans Mono CJK SC}
-\setmainfont{Noto Serif}
-\setsansfont{Noto Sans}
-\setmonofont{Noto Sans Mono}
+% \setCJKmainfont{Noto Serif CJK SC}
+% \setCJKsansfont{Noto Sans CJK SC}
+% \setCJKmonofont{Noto Sans Mono CJK SC}
+% \setmainfont{Noto Serif}
+% \setsansfont{Noto Sans}
+% \setmonofont{Noto Sans Mono}
 
 \hypersetup{colorlinks,allcolors=blue}
 
@@ -265,18 +266,20 @@
 
 \subsection{有限元模型建立}
 
-使用COMSOL软件建立超声波换能器和钢板的有限元模型。其中所使用到的材料的各项参数
+\subsubsection{材料参数}
 
-\begin{table}[h]
+使用COMSOL软件建立超声波换能器和钢板的有限元模型。其中所使用到的材料的各项参数如表\ref{tb:材料参数}所示。
+
+\begin{table}[!h]
   \centering
   \caption{材料参数}
   \label{tb:材料参数}
   \begin{tabularx}{\textwidth}{
-    >{\centering\arraybackslash}X
-    >{\centering\arraybackslash}X
-    >{\centering\arraybackslash}X
-    >{\centering\arraybackslash}X
-  }
+      >{\centering\arraybackslash}X
+      >{\centering\arraybackslash}X
+      >{\centering\arraybackslash}X
+      >{\centering\arraybackslash}X
+    }
     \toprule
     {\textbf{组成部分}} & {\textbf{材料类型}} & {\textbf{材料参数}} & {\textbf{参数值}} \\
     \midrule
@@ -292,15 +295,199 @@
     & & 体积模量（\unit{Pa}） & \num{1.69e11} \\
     & & 剪切模量（\unit{Pa}） & \num{7.37e10} \\
     \midrule
-    \multirow{5}{*}{钢板} & \multirow{5}{*}{Q235} & 密度（\unit{kg/m^3}） & 7750 \\
-    & & 弹性模量（\unit{Pa}） & \num{1.93e11} \\
-    & & 泊松比 & 0.33 \\
-    & & 体积模量（\unit{Pa}） & \num{1.69e11} \\
-    & & 剪切模量（\unit{Pa}） & \num{7.37e10} \\
+    \multirow{5}{*}{钢板} & \multirow{5}{*}{Q235} & 密度（\unit{kg/m^3}） & 7850 \\
+    & & 弹性模量（\unit{Pa}） & \num{2.05e11} \\
+    & & 泊松比 & 0.29 \\
     \midrule
     压电陶瓷 & PZT4 & 密度（\unit{kg/m^3}） & 7500 \\
     \bottomrule
   \end{tabularx}
 \end{table}
+
+\subsubsection{压电材料域-超声波换能器的有限元模型}
+
+\paragraph{支配方程}
+
+超声波换能器的结构如图\ref{pic:超声波换能器结构}所示，超声波换能器的有限元模型如图\ref{pic:超声波换能器有限元模型}所示。由于超声波换能器不是主要研究对象，因此在有限元模型中对其做了合理的简化处理，即其前后端盖直接连接为一体。
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{assets/ultrasonic_transducer_structure.png}
+    \caption{超声波换能器结构}
+    \label{pic:超声波换能器结构}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.6\textwidth]{assets/ultrasonic_transducer_model.png}
+    \caption{超声波换能器有限元模型}
+    \label{pic:超声波换能器有限元模型}
+  \end{subfigure}
+  \caption{超声波换能器}
+\end{figure}
+
+换能器核心部件为中间的压电材料，其支配方程如式所示：
+
+\begin{equation}
+  \nabla \cdot \mathbf{D} = \rho_v, \quad E = - \nabla V
+  \label{eq:压电材料支配方程}
+\end{equation}
+
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{l l}
+    $\mathbf{D}$ & \text{电场位移} \\
+    $\nabla$ & \text{散度运算符} \\
+    $\rho_v$ & \text{自由电荷体密度} \\
+    $V$ & \text{电势} \\
+    $\nabla V$ & \text{梯度运算符} \\
+    $E$ & \text{电场强度}
+  \end{tabular}
+\end{table}
+
+\paragraph{边界条件}
+
+超声波换能器的边界条件即压电材料的边界条件，其边界条件如下：
+
+\begin{enumerate}
+  \item 在两块压电材料的接触面如图\ref{pic:边界条件：交流电}所示，施加电压为133V频率为28kHz的交流电，即
+    \begin{equation}
+      V=133 \times \sin {(2 \times 28000 \times \pi \cdot t)}
+      \label{eq:压电材料电压}
+    \end{equation}
+  \item 在两块压电材料各自的非接触面如图\ref{pic:边界条件：接地}所示，设置接地，即
+    \begin{equation}
+      V=0
+      \label{eq:接地}
+    \end{equation}
+\end{enumerate}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{assets/ultrasonic_transducer_boundry_condition_v1.png}
+    \caption{边界条件：交流电}
+    \label{pic:边界条件：交流电}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{assets/ultrasonic_transducer_boundry_condition_v0.png}
+    \caption{边界条件：接地}
+    \label{pic:边界条件：接地}
+  \end{subfigure}
+  \caption{超声波换能器边界条件}
+\end{figure}
+
+\subsubsection{固体力学域-钢板和超声波换能器}
+
+超声波换能器的外壳和钢板都处在固体力学域中。
+
+\paragraph{整体模型}
+
+所建立的模型如图\ref{pic:固体力学域模型}所示。其中，钢板的尺寸与实际试验所用的钢板尺寸一致，均为$600 \mathrm{mm} \times 600 \mathrm{mm} \times 2 \mathrm{mm}$。
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{assets/ultrasonic_transducer_plate_model.png}
+  \caption{固体力学域模型}
+  \label{pic:固体力学域模型}
+\end{figure}
+
+\paragraph{支配方程}
+
+支配方程如式\eqref{eq:固体力学支配方程}所示。
+
+\begin{equation}
+  \rho \frac{\partial^2 \mathbf{u}}{\partial t^2} = \nabla (\mathbf{F}S)^2 + F_v, \quad F_v = 1 + \nabla \mathbf{u}
+  \label{eq:固体力学支配方程}
+\end{equation}
+
+\paragraph{边界条件}
+
+钢板的边界条件为四个侧边施加固定约束，即：
+
+\begin{equation}
+  \mathbf{u} = 0
+  \label{eq:钢板边界条件}
+\end{equation}
+
+\subsection{有限元模型的验证}
+
+为了确保所建立的有限元模型可用，需要将同等条件的仿真结果与实际试验进行对比。该模型的仿真结果如图\ref{pic:仿真结果}所示。
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{assets/result_600x600_proper_focus.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{assets/result_600x600_side_focus.png}
+  \end{subfigure}
+  \caption{仿真结果}
+  \label{pic:仿真结果}
+\end{figure}
+
+仿真结果与实际试验结果（图\ref{pic:不同频率的超声振动振幅分布}）基本吻合，可认为该有限元模型可用。
+
+\section{超声波换能器配置方案}
+
+通过先前建立的有限元模型对超声波换能器安装在肥箱底部钢板的情况进行仿真，以确定有效振动的覆盖情况以及确定使用多个超声波换能器的情况下的最佳布置方案。
+
+\subsection{单换能器仿真}
+
+采用与实际肥箱底板规格相同的$1600 \mathrm{mm} \times 700 \mathrm{mm} \times 2 \mathrm{mm}$钢板，将超声波换能器安装在钢板中心，仿真结果如图\ref{pic:单换能器仿真结果}所示。
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{assets/result_1600x700_proper_focus.png}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{assets/result_1600x700_side_focus.png}
+  \end{subfigure}
+  \caption{单换能器仿真结果}
+  \label{pic:单换能器仿真结果}
+\end{figure}
+
+从结果中可以看出，单个换能器的有效振动覆盖范围大约为直径700mm的圆。
+
+\subsection{多换能器布置方案}
+
+根据仿真结果提出两种多换能器布置方案，如图\ref{pic:多换能器布置方案}所示。
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \centering
+    \includegraphics[height=5em]{assets/2transducer.pdf}
+    \caption{2个换能器布置方案}
+    \label{pic:2个换能器布置方案}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.5\textwidth}
+    \centering
+    \includegraphics[height=5em]{assets/3transducer.pdf}
+    \caption{3个换能器布置方案}
+    \label{pic:3个换能器布置方案}
+  \end{subfigure}
+  \caption{多换能器布置方案}
+  \label{pic:多换能器布置方案}
+\end{figure}
+
+通过计算，其中方案a（\ref{pic:2个换能器布置方案}）的有效振动覆盖率为%todo
+方案b（\ref{pic:3个换能器布置方案}）的有效振动覆盖率为% todo
+最终确定采用方案b。
+
+\section{结论}
+
+本研究通过试验证明了超声波振动能够降低有机肥施肥机的有机肥与肥箱底板之间的接触阻力，并通过设计正交试验找出了关键影响因素和最佳参数。并且本研究进一步通过有限元仿真确定了最佳的多换能器布置方式。
 
 \end{document}
