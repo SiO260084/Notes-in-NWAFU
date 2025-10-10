@@ -1,9 +1,11 @@
-*.aux
-*.fdb_latexmk
-*.fls
-*.log
-*.out
-*.pdf
-*.synctex.gz
-*.toc
-*.xdv
+# *.aux
+# *.fdb_latexmk
+# *.fls
+# *.log
+# *.out
+# *.synctex.gz
+# *.toc
+# *.xdv
+# **/build/*.pdf
+
+build/
