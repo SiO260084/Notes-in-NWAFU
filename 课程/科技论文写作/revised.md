@@ -1,0 +1,13 @@
+# Revised Article
+
+Over the last decades, there has been an accumulation of evidence suggesting that periodontal disease may contribute to the development of acute myocardial infarction (AMI), coronary heart disease (CHD), and cardiovascular disease.
+
+Periodontal disease is a slowly progressive chronic infectious and inflammatory disease resulting in the destruction of bone that supports teeth. It is the most prevalent chronic disease affecting as many as 75 percent of adults over the age of 30.
+
+Several hypothetical mechanisms have been proposed to explain the association between periodontal disease and cardiovascular diseases. Periodontal bacterial pathogens, endotoxins, and inflammatory mediators found in the oral cavity and bloodstream contribute to platelet aggregation and atherosclerotic plaque formation in coronary blood vessels. Therefore, individuals with elevated inflammatory responses to periodontal infection might be at increased risk for myocardial infarction.
+
+Recent studies have suggested an association between periodontal disease and coronary heart disease, even after adjustment for potential confounding variables. However, other studies have found no such association. Thus, the issue of the association between periodontal disease and coronary heart disease remains controversial.
+
+The controversy in existing research stems from several methodological limitations. Many studies that found a positive association used small, selected samples. Additionally, some studies included a high proportion of older men, which may introduce bias since AMI and CHD are common among elderly people. Furthermore, studies have employed various measures of periodontal disease, including attachment loss, periodontal indices, and self-reported measures, with few utilizing clinical measures such as bacterial counts or serum antibody levels.
+
+To address these limitations, our study aims to examine the association between periodontal disease and the incidence of the first subsequent myocardial infarction in males aged 35-69 years in Ontario. We will use a population-based sample, conduct subgroup analysis according to age, and measure periodontal disease comprehensively using blood cultures, IgG antibody tests, and standardized clinical examination. The main hypothesis is that periodontal disease may increase the risk of subsequent acute myocardial infarction among middle-aged men in Ontario with no previous history of coronary heart disease, stroke, transient cerebral ischemia, or cancer. The primary objective is to determine whether an association exists between periodontal disease and the subsequent incidence of AMI among middle-aged men in Ontario.
