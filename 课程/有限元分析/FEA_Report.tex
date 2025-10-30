@@ -1,5 +1,6 @@
-\documentclass[fontset=windows,12pt,a4paper,titlepage,UTF8]{ctexart}
+\documentclass[fontset=windows,12pt,a4paper]{ctexart}
 
+\usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{tabularx}
 \usepackage{booktabs}
@@ -11,21 +12,31 @@
 \usepackage{multirow}
 \usepackage{makecell}
 \usepackage{siunitx}
+\usepackage{abstract}
+\usepackage{fancyhdr}
 
-% \setCJKmainfont{Noto Serif CJK SC}
-% \setCJKsansfont{Noto Sans CJK SC}
-% \setCJKmonofont{Noto Sans Mono CJK SC}
-% \setmainfont{Noto Serif}
-% \setsansfont{Noto Sans}
-% \setmonofont{Noto Sans Mono}
+\geometry{hmargin=1in,vmargin=1in}
 
 \hypersetup{colorlinks,allcolors=blue}
 
 \sisetup{detect-all}
 
-\author{石成玉}
-\date{\today}
+\makeatletter
+\g@addto@macro\CTEX@section@format{\raggedright}
+\makeatother
+
+\setlength{\absleftindent}{0cm}
+\setlength{\absrightindent}{0cm}
+
 \title{基于超声波振动的肥箱抗粘减阻装置设计}
+\author{石成玉 2025056203}
+\date{}
+
+\pagestyle{fancy}       % 启用 fancyhdr
+\fancyhf{}              % 清空默认的页眉页脚
+\cfoot{\thepage}        % 页码居中显示在页脚
+\makeatletter
+\fancyhead[C]{有限元分析报告}
 
 \begin{document}
 
@@ -39,7 +50,7 @@
 
 \end{abstract}
 
-\tableofcontents
+% \tableofcontents
 
 \newpage
 
