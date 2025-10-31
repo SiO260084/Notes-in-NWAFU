@@ -1,0 +1,107 @@
+body {
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "sans-serif";
+    font-size: 12pt;
+    text-autospace: normal;
+    text-justify: inter-ideograph;
+    counter-set: h1 0 h2 0 h3 0 h4 0 h5 0 h6 0;
+
+    h1 {
+        border-bottom: 2pt solid green;
+        color: green;
+        counter-increment: h1;
+        counter-set: h2 0 h3 0 h4 0 h5 0 h6 0;
+
+        &::before {
+            content: counter(h1) " ";
+        }
+    }
+
+    h2 {
+        border-bottom: 1pt solid black;
+        counter-increment: h2;
+        counter-set: h3 0 h4 0 h5 0 h6 0;
+
+        &::before {
+            content: counter(h1) "." counter(h2) " ";
+        }
+    }
+
+    h3 {
+        counter-increment: h3;
+        counter-reset: h4 0 h5 0 h6 0;
+
+        &::before {
+            content: counter(h1) "." counter(h2) "." counter(h3) " ";
+        }
+    }
+
+    h4 {
+        counter-increment: h4;
+        counter-reset: h5 0 h6 0;
+
+        &::before {
+            content: counter(h4) " ";
+        }
+    }
+
+    h5 {
+        counter-increment: h5;
+        counter-reset: h6 0;
+
+        &::before {
+            content: "（" counter(h5) "）";
+        }
+    }
+
+    h6 {
+        counter-increment: h6;
+
+        &::before {
+            content: "（" counter(h5) "." counter(h6) "）";
+        }
+    }
+
+    p {
+        text-align: justify;
+        text-indent: 2em;
+    }
+
+    strong {
+        color: green;
+    }
+
+    li {
+        line-height: 20pt;
+
+        &::marker {
+            color: green;
+        }
+    }
+
+    blockquote {
+        font-family: "NSimSun", "SimSun", "Noto Serif CJK SC", "serif";
+        text-align: justify;
+        text-indent: 2em;
+        border: 2pt solid black;
+        padding: 1ex;
+
+        &>cite {
+            text-align: right;
+            display: block;
+        }
+    }
+
+    img {
+        max-width: 80%;
+    }
+
+    pre.mermaid {
+        & p {
+            text-indent: 0;
+        }
+    }
+
+    .centering {
+        text-align: center;
+    }
+}

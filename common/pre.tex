@@ -1,0 +1,32 @@
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{graphics}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{ctex}
+
+\pdfvariable minorversion=7
+
+\geometry{hmargin=1in,vmargin=1in,a4paper}
+
+\makeatletter
+\hypersetup{
+	colorlinks,
+	linkcolor=blue,
+	pdfencoding=auto,
+	pdftitle={\@title},
+	pdfauthor={\@author},
+	pdfcreator=LaTeX
+}
+\makeatother
+
+\tcbset{
+	before upper={\parindent2em}
+}
+
+\usetikzlibrary{graphdrawing,graphs,arrows.meta}
+\usegdlibrary{layered}

@@ -1,0 +1,31 @@
+{
+    // latex
+    "latex-workshop.formatting.latex": "tex-fmt",
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-bibtex",
+                "-f",
+                "-lualatex",
+                "-outdir=%OUTDIR%/build",
+                "-auxdir=%OUTDIR%/build",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+}
