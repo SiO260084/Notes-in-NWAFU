@@ -1,22 +1,19 @@
-\documentclass[a4paper,12pt,fontset=none,titlepage]{ctexart}
-\usepackage{amsmath}
-\usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{tabularx}
+\DocumentMetadata{
+	lang=zh-CN,
+	tagging=on
+}
+\documentclass[12pt,fontset=windows]{ctexart}
 
-\setCJKmainfont{Noto Serif CJK SC}
-\setCJKsansfont{Noto Sans CJK SC}
-\setCJKmonofont{Noto Sans Mono CJK SC}
+\input{../common/pre.tex}
 
-\hypersetup{colorlinks=true,linkcolor=blue}
-
-
-\begin{document}
 \author{石成玉}
 \title{读基于超声波振动的肥箱抗粘减阻特性分析与装置设计}
 \date{2025年9月24日}
 
+\begin{document}
+
 \maketitle
+
 \tableofcontents
 
 \section{研究背景}
@@ -95,10 +92,13 @@
    有机肥颗粒是松散材料，在倾斜钢板的过程中，应该测量哪一时刻的倾斜角度？是否会出现有机肥顶部首先开始滑动的情况？
 
    \item \textbf{超声振动频率对有机肥摩擦角的影响（Page.23）}
-   \begin{quote}
-		\fbox{换能器端面的振幅降低，有机肥颗粒与钢板接触面积开始增大}
-   \end{quote}
-   
+
+	\begin{tcolorbox}
+		\begin{quote}
+			换能器端面的振幅降低，有机肥颗粒与钢板接触面积开始增大
+		\end{quote}
+	\end{tcolorbox}
+	
    振幅降低为什么会导致有机肥颗粒与钢板的接触面积增大？振幅改变是否影响有机肥颗粒与钢板的接触时间？
    
    \item \textbf{COMSOL中换能器与钢板的连接方式（Page.50）}
