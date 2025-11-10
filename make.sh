@@ -1,0 +1,1 @@
+latexmk -synctex=1 -interaction=nonstopmode -file-line-error -bibtex -f -lualatex -outdir=%OUTDIR%/build -auxdir=%OUTDIR%/build %DOC%

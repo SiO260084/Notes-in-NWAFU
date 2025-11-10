@@ -1,0 +1,76 @@
+\usepackage{unicode-math}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{xparse}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage[pdfusetitle,colorlinks,allcolors=blue]{hyperref}
+\usepackage{lastpage}
+\usepackage[backend=biber,hyperref=true,style=authoryear]{biblatex}
+
+\usetikzlibrary{graphdrawing,graphs,graphs.standard}
+\usegdlibrary{layered}
+
+\makeatletter
+\newcommand{\@affiliation}{}
+\newcommand{\@email}{}
+\newcommand{\@studentid}{}
+
+\newcommand{\affiliation}[1]{\gdef\@affiliation{#1}}
+\newcommand{\email}[1]{\gdef\@email{#1}}
+\newcommand{\studentid}[1]{\gdef\@studentid{#1}}
+
+\renewcommand{\maketitle}{
+
+	{
+		\centering
+
+		{\zihao{2}\heiti \@title}
+
+		\vspace{40pt}
+
+		{\zihao{-4}\fangsong \@author}
+
+		\vspace{30pt}
+
+		{\zihao{6}\songti \@affiliation}
+
+		\vspace{50pt}
+	}
+
+}
+\makeatother
+
+\renewenvironment{abstract}{{\zihao{-5}\sffamily [摘要] \zihao{-5}\songti}}{\normalsize}
+
+\NewDocumentCommand{\keywords}{m o o o o o o o o}{
+
+	{
+		\zihao{-5} \sffamily
+		[关键词]
+		#1\IfNoValueTF{#2}{}{；#2}\IfNoValueTF{#3}{}{；#3}\IfNoValueTF{#4}{}{；#4}\IfNoValueTF{#5}{}{；#5}\IfNoValueTF{#6}{}{；#6}\IfNoValueTF{#7}{}{；#7}\IfNoValueTF{#8}{}{；#8}\IfNoValueTF{#9}{}{；#9}
+	}
+
+	\normalfont\normalsize
+
+}
+
+\ctexset{
+	section = {
+	  format = \zihao{4}\songti
+	},
+	subsection = {
+			format = \zihao{5}\heiti
+	},
+	subsubsection = {
+			format = \zihao{5}\kaishu
+	}
+}
+\renewcommand{\figurename}{\sffamily\zihao{5} 图}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0cm}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}

@@ -1,6 +1,6 @@
 {
     // latex
-    "latex-workshop.formatting.latex": "tex-fmt",
+    "latex-workshop.formatting.latex": "latexindent",
     "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.tools": [
         {
@@ -10,7 +10,6 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-bibtex",
                 "-f",
                 "-lualatex",
                 "-outdir=%OUTDIR%/build",
@@ -28,4 +27,5 @@
             ]
         }
     ],
+    "latex-workshop.latex.clean.subfolder.enabled": true
 }
