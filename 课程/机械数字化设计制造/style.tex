@@ -2,16 +2,19 @@
 \usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{fancyhdr}
+\usepackage{multicol}
 \usepackage{xparse}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{booktabs}
-\usepackage[pdfusetitle,colorlinks,allcolors=blue]{hyperref}
+\usepackage[colorlinks,allcolors=blue]{hyperref}
 \usepackage{lastpage}
-\usepackage[backend=biber,hyperref=true,style=authoryear]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015ms]{biblatex}
 
 \usetikzlibrary{graphdrawing,graphs,graphs.standard}
 \usegdlibrary{layered}
+
+\geometry{paper=a4paper,margin=1.5cm}
 
 \makeatletter
 \newcommand{\@affiliation}{}
@@ -43,14 +46,13 @@
 }
 \makeatother
 
-\renewenvironment{abstract}{{\zihao{-5}\sffamily [摘要] \zihao{-5}\songti}}{\normalsize}
+\renewenvironment{abstract}{{\zihao{-5}\sffamily\noindent【摘要】\zihao{-5}\songti}}{\normalsize}
 
 \NewDocumentCommand{\keywords}{m o o o o o o o o}{
 
 	{
-		\zihao{-5} \sffamily
-		[关键词]
-		#1\IfNoValueTF{#2}{}{；#2}\IfNoValueTF{#3}{}{；#3}\IfNoValueTF{#4}{}{；#4}\IfNoValueTF{#5}{}{；#5}\IfNoValueTF{#6}{}{；#6}\IfNoValueTF{#7}{}{；#7}\IfNoValueTF{#8}{}{；#8}\IfNoValueTF{#9}{}{；#9}
+		\noindent\zihao{-5}\sffamily
+		【关键词】#1\IfNoValueTF{#2}{}{；#2}\IfNoValueTF{#3}{}{；#3}\IfNoValueTF{#4}{}{；#4}\IfNoValueTF{#5}{}{；#5}\IfNoValueTF{#6}{}{；#6}\IfNoValueTF{#7}{}{；#7}\IfNoValueTF{#8}{}{；#8}\IfNoValueTF{#9}{}{；#9}
 	}
 
 	\normalfont\normalsize

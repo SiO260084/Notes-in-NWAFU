@@ -1,10 +1,9 @@
 \usepackage{amsmath}
-\usepackage{mathtools}
 \usepackage{unicode-math}
 \usepackage{geometry}
 \usepackage{float}
 \usepackage{tikz}
-\usepackage[pdfusetitle]{hyperref}
+\usepackage[colorlinks,allcolors=blue]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{graphics}
 \usepackage{booktabs}
@@ -13,20 +12,9 @@
 
 \geometry{hmargin=1in,vmargin=1in,a4paper}
 
-% \makeatletter
-\hypersetup{
-	colorlinks,
-	linkcolor=blue,
-	% pdfencoding=auto,
-	% pdftitle={\@title},
-	% pdfauthor={\@author},
-	% pdfcreator=LaTeX
-}
-% \makeatother
-
 \tcbset{
 	before upper={\parindent2em}
 }
 
-\usetikzlibrary{graphdrawing,graphs,arrows.meta}
+\usetikzlibrary{graphdrawing,graphs,graphs.standard,arrows.meta}
 \usegdlibrary{layered}
