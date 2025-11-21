@@ -1,20 +1,15 @@
-\usepackage{unicode-math}
 \usepackage{amsmath}
 \usepackage{geometry}
 \usepackage{fancyhdr}
 \usepackage{multicol}
 \usepackage{xparse}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usepackage{booktabs}
 \usepackage[colorlinks,allcolors=blue]{hyperref}
-\usepackage{lastpage}
 \usepackage[backend=biber,style=gb7714-2015ms]{biblatex}
 
-\usetikzlibrary{graphdrawing,graphs,graphs.standard}
-\usegdlibrary{layered}
-
 \geometry{paper=a4paper,margin=1.5cm}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}
 
 \makeatletter
 \newcommand{\@affiliation}{}
@@ -75,4 +70,4 @@
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0cm}
-\fancyfoot[C]{\thepage/\pageref{LastPage}}
+\fancyfoot[C]{\thepage}
