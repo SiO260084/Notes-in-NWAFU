@@ -1,0 +1,1 @@
+rsync -avP -e 'ssh -p 8022' ./ u0_a357@10.22.21.225:/storage/emulated/0/Projects/Notes-in-NWAFU

@@ -1,0 +1,58 @@
+%引入宏包
+\usepackage{hyperref}
+\usepackage{unicode-math}
+\usepackage{geometry}
+\usepackage{babel}
+\usepackage{indentfirst}
+\usepackage{fontspec}
+\usepackage{luatexja}
+\usepackage{luatexja-fontspec}
+\usepackage{amsmath}
+\usepackage{ragged2e}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage[backend=biber,style=gb7714-2015ms]{biblatex}
+
+%Tikz
+\usetikzlibrary{intersections,calc,shapes.callouts}
+
+%语言设置
+\babelprovide[import,main]{chinese}
+\babelprovide[import]{english}
+
+%字体设置
+\setmainfont{Times New Roman}[BoldFont=SimHei]
+\setmainjfont{NSimSun}[BoldFont=SimHei]
+\setsansfont{SimHei}
+\setsansjfont{SimHei}
+
+\newjfontfamily{\heiti}{SimHei}
+\newjfontfamily{\kaiti}{KaiTi}
+
+%段落格式
+\linespread{1.2}
+\setlength{\parskip}{8pt}
+\setlength{\parindent}{24pt}
+
+%引用设置
+\hypersetup{colorlinks,allcolors=blue}
+
+%纸张设置
+\geometry{a4paper,margin=1.5cm}
+
+%参考文献
+\addbibresource{./bibliography.bib}
+
+%重定义
+\renewenvironment{abstract}{
+	\begin{center}
+		\large \heiti 摘要
+	\end{center}
+
+	\vspace{2ex}
+
+}{
+}
