@@ -13,46 +13,75 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tabularx}
 \usepackage{tikz}
 \usepackage[backend=biber,style=gb7714-2015ms]{biblatex}
 
-%Tikz
-\usetikzlibrary{intersections,calc,shapes.callouts}
+% Tikz
+\usetikzlibrary{intersections,calc,shapes.callouts,shapes.geometric,arrows.meta,positioning,decorations.pathmorphing,shapes}
+\tikzset{
+	block/.style = {
+		rectangle,
+		draw,
+		rounded corners,
+		align=center,
+		minimum width=3cm,
+		minimum height=1cm
+	},
+	decision/.style = {
+		diamond,
+		aspect=2,
+		draw,
+		align=center,
+		minimum width=3cm,
+		inner sep=1pt
+	},
+	startstop/.style = {
+		rectangle,
+		draw,
+		align=center,
+		minimum width=3cm,
+		minimum height=3cm
+	},
+	arrow/.style = {
+		-{Stealth},
+		thick
+	}
+}
 
-%语言设置
+% 语言设置
 \babelprovide[import,main]{chinese}
 \babelprovide[import]{english}
 
-%字体设置
-\setmainfont{Times New Roman}[BoldFont=SimHei]
-\setmainjfont{NSimSun}[BoldFont=SimHei]
-\setsansfont{SimHei}
-\setsansjfont{SimHei}
+% 字体设置
+% \setmainfont{Times New Roman}[BoldFont=SimHei]
+% \setmainjfont{NSimSun}[BoldFont=SimHei]
+% \setsansfont{SimHei}
+% \setsansjfont{SimHei}
 
-\newjfontfamily{\heiti}{SimHei}
-\newjfontfamily{\kaiti}{KaiTi}
+% \newjfontfamily{\heiti}{SimHei}
+% \newjfontfamily{\kaiti}{KaiTi}
 
-%段落格式
+% 段落格式
 \linespread{1.2}
 \setlength{\parskip}{8pt}
 \setlength{\parindent}{24pt}
 
-%引用设置
+% 引用设置
 \hypersetup{colorlinks,allcolors=blue}
 
-%纸张设置
-\geometry{a4paper,margin=1.5cm}
+% 纸张设置
+\geometry{a4paper,margin=1in}
 
-%参考文献
+% 参考文献
 \addbibresource{./bibliography.bib}
 
-%重定义
+% 重定义
 \renewenvironment{abstract}{
 	\begin{center}
 		\large \heiti 摘要
 	\end{center}
 
 	\vspace{2ex}
-
-}{
-}
+}{}

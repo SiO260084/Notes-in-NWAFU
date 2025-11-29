@@ -1,0 +1,42 @@
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[node distance=2cm]
+
+	% 节点
+	% \node[startstop] (start) {开始};
+	% \node[block, below=of start] (step1) {步骤 1};
+	% \node[decision, below=of step1] (decide) {条件？};
+	% \node[block, below left=2cm and 1.5cm of decide] (step2a) {路径 A};
+	% \node[block, below right=2cm and 1.5cm of decide] (step2b) {路径 B};
+	% \node[startstop, below=3cm of decide] (end) {结束};
+	\node[block] (车速传感器) {车速传感器};
+	\node[startstop,below=of 车速传感器] (控制器) {控制器};
+	\node[block,right=of 控制器] (排肥阻力传感器) {排肥阻力传感器};
+	\node[block,above=of 排肥阻力传感器] (肥箱肥量传感器) {肥箱肥量传感器};
+	\node[block,below=of 排肥阻力传感器] (流量传感器) {流量传感器};
+	\node[startstop,right=of 排肥阻力传感器] (排肥装置) {排肥装置};
+	\node[block,below=of 排肥装置] (超声波换能器) {超声波换能器};
+
+	% 连接
+	% \draw[arrow] (start) -- (step1);
+	% \draw[arrow] (step1) -- (decide);
+	% \draw[arrow] (decide) -- node[left] {是} (step2a);
+	% \draw[arrow] (decide) -- node[right] {否} (step2b);
+	\draw[arrow] (车速传感器) -- node[fill=white]{前进速度} (控制器);
+	\draw[arrow] (肥箱肥量传感器) -- node[fill=white]{肥量} (控制器);
+	\draw[arrow] (排肥阻力传感器) -- node[fill=white]{力} (控制器);
+	\draw[arrow] (流量传感器) -- node[fill=white]{排肥速度} (控制器);
+	\draw[arrow] (控制器) |- node[fill=white]{功率} (超声波换能器);
+	\draw[arrow] (超声波换能器) -- (排肥装置);
+	\draw[arrow] (排肥装置) -- (肥箱肥量传感器);
+	\draw[arrow] (排肥装置) -- (排肥阻力传感器);
+	\draw[arrow] (排肥装置) -- (流量传感器);
+
+	% 两路径指向结束
+	% \draw[arrow] (step2a) |- (end);
+	% \draw[arrow] (step2b) |- (end);
+
+	\end{tikzpicture}
+	\caption{控制系统示意图}
+	\label{pic:控制系统示意图}
+\end{figure}
