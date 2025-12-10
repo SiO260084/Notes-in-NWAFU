@@ -1,0 +1,43 @@
+\usepackage{biblatex}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{xparse}
+\usepackage{geometry}
+
+% pagesize
+\geometry{a4paper,margin=1in}
+
+% titlepage
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}
+	\centering
+
+	\vspace{5ex}
+
+	\makebox[15em][s]{\fontsize{16pt}{32pt}\selectfont 西北农林科技大学}
+
+	\vspace{10ex}
+
+	{\fontsize{22pt}{44pt}\selectfont 研究生课程论文}
+
+	\vspace{12ex}
+
+	（课程名称：\underline{《自然辩证法概论》}）
+
+	\vfill
+
+	\makebox[6em][s]{年级、姓名}：\underline{\makebox[20em][c]{25级 \@author}}
+
+	\makebox[6em][s]{学院、专业}：\underline{\makebox[20em][c]{机械与电子工程学院 机械专业}}
+
+	\makebox[6em][s]{结业成绩}：\underline{\makebox[20em][c]{}}
+
+	\makebox[6em][s]{结业学期}：\underline{\makebox[20em][c]{2025年秋季学期}}
+
+	\makebox[6em][s]{任课老师姓名}：\underline{\makebox[20em][c]{郭洪水}}
+\end{titlepage}
+
+}
+\makeatother
+
