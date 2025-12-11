@@ -1,11 +1,27 @@
-\usepackage{biblatex}
-\usepackage{fancyhdr}
-\usepackage[colorlinks=true,allcolors=blue]{hyperref}
-\usepackage{xparse}
 \usepackage{geometry}
+\usepackage{xparse}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{setspace}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+
+% pgf
+\pgfplotsset{compat=newest}
+
+% font
+\setmainfont{Times New Roman}
+\setCJKmainfont{NSimSun}[AutoFakeBold=1.5]
+\newCJKfontfamily{\xingkai}{STXingkai}[Renderer=HarfBuzz]
 
 % pagesize
-\geometry{a4paper,margin=1in}
+\geometry{a4paper,hmargin=1in,vmargin=1.25in}
 
 % titlepage
 \makeatletter
@@ -15,29 +31,58 @@
 
 	\vspace{5ex}
 
-	\makebox[15em][s]{\fontsize{16pt}{32pt}\selectfont 西北农林科技大学}
+	\makebox[15em][s]{\zihao{3} \xingkai 西北农林科技大学}
 
 	\vspace{10ex}
 
-	{\fontsize{22pt}{44pt}\selectfont 研究生课程论文}
+	{\zihao{2} 研究生课程论文}
 
 	\vspace{12ex}
 
-	（课程名称：\underline{《自然辩证法概论》}）
+	{\zihao{-4}（课程名称：\underline{《自然辩证法概论》}）}
 
 	\vfill
 
-	\makebox[6em][s]{年级、姓名}：\underline{\makebox[20em][c]{25级 \@author}}
+	\begin{spacing}{1.16}\zihao{-3}\setlength{\parskip}{8pt}
+		\makebox[6em][s]{年级、姓名}：\underline{\makebox[20em][c]{25级 \@author}}
 
-	\makebox[6em][s]{学院、专业}：\underline{\makebox[20em][c]{机械与电子工程学院 机械专业}}
+		\makebox[6em][s]{学院、专业}：\underline{\makebox[20em][c]{机械与电子工程学院 机械专业}}
 
-	\makebox[6em][s]{结业成绩}：\underline{\makebox[20em][c]{}}
+		\makebox[6em][s]{结业成绩}：\underline{\makebox[20em][c]{}}
 
-	\makebox[6em][s]{结业学期}：\underline{\makebox[20em][c]{2025年秋季学期}}
+		\makebox[6em][s]{结业学期}：\underline{\makebox[20em][c]{2025年秋季学期}}
 
-	\makebox[6em][s]{任课老师姓名}：\underline{\makebox[20em][c]{郭洪水}}
+		\makebox[6em][s]{任课老师姓名}：\underline{\makebox[20em][c]{郭洪水}}
+	\end{spacing}
+
 \end{titlepage}
 
 }
 \makeatother
 
+% title
+\makeatletter
+\newcommand{\articleTitle}{\begin{center}\zihao{3}\heiti\@title\end{center}}
+\makeatother
+
+% abstract
+\renewenvironment{abstract}{\textbf{摘要：}}{}
+
+% keyword
+\NewDocumentCommand{\keywords}{m o o o o o o o o}{
+\textbf{关键词：}#1\IfNoValueTF{#2}{}{；#2}\IfNoValueTF{#3}{}{；#3}\IfNoValueTF{#4}{}{；#4}\IfNoValueTF{#5}{}{；#5}\IfNoValueTF{#6}{}{；#6}\IfNoValueTF{#7}{}{；#7}\IfNoValueTF{#8}{}{；#8}\IfNoValueTF{#9}{}{；#9}
+}
+
+% counter
+\newcounter{cnt}
+\newcommand{\li}{\stepcounter{cnt}\thecnt. }
+
+% header & footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% bibliograpy
+\ExecuteBibliographyOptions{gbcitelabel=circle,gbbiblabel=circle,autocite=superscript}
