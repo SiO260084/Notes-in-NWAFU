@@ -1,0 +1,210 @@
+\documentclass[12pt,fontset=windows]{ctexart}
+
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+\usetikzlibrary{intersections,calc,shapes.callouts,shapes.geometric,arrows.meta,positioning,decorations.pathmorphing,shapes}
+
+\geometry{a4paper,margin=1in}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\answer}[1]{\uline{#1}}
+\newcounter{selection}
+\setcounter{selection}{1}
+\newcommand{\resetCounter}{\setcounter{selection}{1}}
+\newcommand{\showCounter}{\Alph{selection}.\stepcounter{selection}}
+\newcommand{\selectionsFOURxONE}[4]{{
+	\showCounter #1
+	\hfill
+	\showCounter #2
+	\hfill
+	\showCounter #3
+	\hfill
+	\showCounter #4
+}}
+\newcommand{\selectionsONExFOUR}[4]{{
+	\showCounter #1
+
+	\showCounter #2
+
+	\showCounter #3
+
+	\showCounter #4
+}}
+
+\newcommand{\selectionsTWOxTWO}[4]{{
+	\showCounter #1
+	\hfill
+	\showCounter #2
+
+	\showCounter #3
+	\hfill
+	\showCounter #4
+}}
+
+\begin{document}
+
+\section{单项选择题}
+\begin{enumerate}
+	\item 弹性力学研究（\answer{A}）由于受外力作用、边界约束或温度改变等原因而发生的应力、形变和位移。
+
+	\resetCounter\selectionsFOURxONE{弹性体}{刚体}{粘性体}{塑性体}
+
+	\item 弹性力学平面问题的求解中，平面应力问题与平面应变问题的三类基本方程具有下列关系（\answer{B}）。
+
+	\resetCounter\selectionsONExFOUR{平衡方程、几何方程、物理方程完全相同}{平衡方程、几何方程相同，物理方程不同}{平衡方程、物理方程相同，几何方程不同}{平衡方程、几何方程、物理方程完全不相同}
+
+	\item 平面问题的几何方程表述的是（\answer{D}）之间的关系
+	
+	\resetCounter\selectionsTWOxTWO{应力与体力}{应力与面力}{应力与应变}{应变与位移}
+	
+	\item 要使函数$\Phi(x,y)=axy^5+bx^5y$能作为应力函数，$a$与$b$的关系是（\answer{C}）
+
+	\resetCounter\selectionsFOURxONE{$a$和$b$可任意取值}{$a=b$}{$a=-b$}{$a=\frac{b}{2}$}
+
+	\item 对于三结点三角形单元，每个单元有3个结点，每个结点有（\answer{B}）个结点位移分量
+	
+	\resetCounter\selectionsFOURxONE{1}{2}{3}{4}
+\end{enumerate}
+
+\section{填空题}
+
+\begin{enumerate}
+	\item 弹性力学边界条件可以分为\answer{位移}边界条件、\answer{应变}边界条件和\answer{混合}边界条件。
+	\item 按应力求解平面问题时，应力分量应当满足\answer{平衡微分}方程和\answer{相容}方程。此外，应力分量在边界上还应满足\answer{应力边界条件}。
+	\item 杆件在竖直方向受到体力分量$f_y=f（常量）$的作用，其应力分量为：$\sigma_x=C_1 x$；$\sigma_y=C_2 y+C_3$；$\tau_xy=0$，支承条件如图\ref{pic:1}所示。则$C_1=$\answer{$0$}；$C_2=$\answer{$0$}；$C_3=$\answer{$f$}。
+	\item 对平面应变问题，只需将平面应力问题的物理方程中材料常数作替换即可，即$E\rightarrow$\answer{$\frac{E}{1-\mu^2}$}；$\mu\rightarrow$\answer{$\frac{1}{1-\mu^2}$}。
+\end{enumerate}
+
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (3,0) node[below right]{$X$};
+		\draw[thick,->] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
+		\draw (0.5,0) rectangle (2.5,4);
+		\draw (2.7,4) -- (3.3,4);
+		\draw[<->] (3,4) -- node[right]{$h$} (3,0);
+		\foreach \x in {0.2,0.4,...,3}{
+			\draw (\x,0) -- ({\x-0.5},-0.4);
+		}
+	\end{tikzpicture}
+	\caption{}
+	\label{pic:1}
+\end{figure}
+
+\section{简答题}
+
+\begin{enumerate}
+	\item 简述平面应力问题的基本特征并举例说明。
+
+	\answer{特征：平面应力问题，就是只有平面应力分量（$\sigma_x$、$\sigma_y$和$\tau_{xy}$）存在，且仅为$x$，$y$的函数的弹性力学问题。}
+
+	\answer{例子：设有很薄的等厚度薄板，只在板边上受有平行于板面并且不沿厚度变化的面力或约束（在板面上没有受到任何面力和约束）。同时体力也平行于板面并且不沿厚度变化。例如深梁，以及平板坝的平板支墩就属于此类问题。}
+
+	\item 图示水坝（楔形体），试写出其应力边界条件。
+
+	\begin{tikzpicture}
+		\draw[thick,->] (1,0) -- (-3,0) node[above]{$x$};
+		\draw[thick,->] (0,0) node[above]{$o$} -- (0,-4) node[left]{$y$};
+		\draw[decoration={snake}] (0,0) -- (-2.2,-3) decorate{(-2.2,-3) -- (0,-3)};
+		\draw[<->] (0,-1) arc (270:{180+atan(3/2.2)}:1) node[midway,below]{$\beta$};
+		\foreach \t in {0,1,...,10}{
+			\draw[->] ({0.1*\t},{-0.3*\t}) -- (0,{-0.3*\t});
+		}
+		\draw (0,0) -- ({0.1*10},{-0.3*10}) node[above right]{$\gamma_1 y$};
+		\draw ({0.1*5},{-0.3*5}) -- ({0.1*10},{-0.3*5});
+		\draw[<->] ({0.1*8},0) -- ({0.1*8},{-0.3*5}) node[midway,fill=white]{$y$};
+	\end{tikzpicture}
+
+	\item 以三节点三角形单元为例，说明有限元分析法对离散结构的每个单元进行单元分析的具体内容和步骤。
+	\item 边长为$1$的正方边形板结构分为\uppercase\expandafter{\romannumeral1}，\uppercase\expandafter{\romannumeral2}两个单元，单元编号、结点整体编码及各个单元局部编码如图所示，设通过单元分析已经得到这两个单元的刚度矩阵分别为$K^{(1)}$、$K^{(2)}$（即：单元刚度矩阵元素已知，其分块子矩阵可用符号表示）。试求这两个单元的刚度贡献矩阵$[K]^{(1)}$、$[K]^{(2)}$及离散系统的整体刚度矩阵$[K]$。
+	
+	\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		\coordinate (Y) at (0,5);
+		\coordinate (X) at (5,0);
+		\coordinate (P1) at (0,4);
+		\coordinate (P2) at (4,0);
+		\coordinate (P3) at (4,4);
+		\draw[->,thick] (O) -- (Y);
+		\draw[->,thick] (O) -- (X);
+		\draw (P1) -- (P3);
+		\draw (P3) -- (P2);
+		\draw (P1) -- (P2);
+		\node[below left] at (O) {$o$};
+		\node[above right] at (O) {$m$};
+		\node[left] at (Y) {$y$};
+		\node[above] at (X) {$x$};
+		\node[above left] at (O) {$4$};
+		\node[left] at (P1) {$1$};
+		\node[above right] at (P2) {$2$};
+		\node[above right] at (P3) {$3$};
+		\node[below left] at (P3) {$m$};
+		\node at ($(P1) + (0.5,-0.25)$) {$i$};
+		\node at ($(P1) + (0.25,-0.6)$) {$j$};
+		\node at ($(P2) + (-0.25,0.6)$) {$j$};
+		\node at ($(P2) + (-0.5,0.25)$) {$i$};
+		\node at (1,1) {\uppercase\expandafter{\romannumeral1}};
+		\node at (3,3) {\uppercase\expandafter{\romannumeral2}};
+	\end{tikzpicture}
+\end{enumerate}
+
+\section{分析计算题}
+
+\begin{enumerate}
+	\item 图所示的悬臂梁，长度为$l$，高度为$h$，$l>>h$，在上边界受匀布荷载$q$，试检验应力函数$\Phi=Ay^5+Bx^2y^3+Cy^3+Dx^2+Ex^2y$能否成为此问题的解？如可以，试求出应力分量。
+	
+	\begin{tikzpicture}
+		\draw[very thick,->] (0,0) node[left]{$O$} -- (6,0) node[above]{$x$};
+		\draw[very thick,->] (0,0) -- (0,-2) node[right]{$y$};
+		\draw[thick] (0,1) rectangle (5,-1);
+		\foreach \x in {0,0.5,...,5}{
+			\draw[->] (\x,1.5) -- (\x,1);
+		}
+		\draw[<->] (2.5,0) -- (2.5,1) node[midway,right]{$\frac{h}{2}$};
+		\draw[<->] (2.5,0) -- (2.5,-1)node[midway,right]{$\frac{h}{2}$};
+		\draw[<->] (0,-1.25) -- (5,-1.25) node[midway,below]{$l(l>>h)$};
+		\draw[very thick] (5,2) -- (5,-2);
+		\begin{scope}
+			\clip (5.05,2) rectangle (5.55,-2);
+			\foreach \y in {-3,-2.9,...,2}{
+				\draw (5.05,\y) -- ++(0.5,0.5);
+			}
+		\end{scope}
+		\draw (0,1.5) -- (5,1.5) node[midway,above]{$q$};
+	\end{tikzpicture}
+	
+	\item 如图所示的矩形截面柱体，在顶部受有集中力$\boldsymbol{F}$和力矩$\boldsymbol{M}=\frac{Fb}{2}$的作用，试用应力函数$\Phi=Ax^3+Bx^2$求解图示问题的应力及位移，设在$A$点的位移和转角均为零。
+	
+	\begin{tikzpicture}
+		\draw[very thick,->] (0,0) node[below left]{$O$}-- (2.5,0) node[below right]{$x$};
+		\draw[very thick,->] (0,0) -- (0,-6) node[below right]{$y$};
+		\draw[thick] (-1,0) rectangle (1,-5);
+		\draw (-2,-5) -- (2,-5);
+		\begin{scope}
+			\clip (-2,-5) rectangle (2,-5.5);
+			\foreach \x in {-2,-1.9,...,3}{
+				\draw (\x,-5) -- ++(-0.5,-0.5);
+			}
+		\end{scope}
+		\draw[<->] (1.5,0) -- (1.5,-5) node[midway,right]{$h(h>>b,\delta=1)$};
+		\draw[<->] (-1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+		\draw[<->] (1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+		\node[above right] at (0,-5) {$A$};
+		\draw[->] (0,1) -- (0,0) node[pos=0,above]{$\boldsymbol{F}$};
+		\draw[->] (135:0.5) arc (135:45:0.5) node[pos=1,right]{$\boldsymbol{M}=\frac{Fb}{2}$};
+	\end{tikzpicture}
+\end{enumerate}
+
+\end{document}
