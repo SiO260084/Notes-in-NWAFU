@@ -1,3 +1,4 @@
+\DocumentMetadata{pdfversion=1.7,pdfstandard=A-3a,lang=zh-CN}
 \documentclass[12pt,fontset=windows]{ctexart}
 
 \usepackage{geometry}
@@ -6,14 +7,15 @@
 \usepackage{float}
 \usepackage{amsmath}
 \usepackage{lua-ul}
+\usepackage{unicode-math}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
 
-\hypersetup{allcolors=black,colorlinks}
+\hypersetup{allcolors=blue,colorlinks}
 
 \usetikzlibrary{intersections,calc,shapes.callouts,shapes.geometric,arrows.meta,positioning,decorations.pathmorphing,shapes}
 
-\geometry{a4paper,hmargin=0.5in,vmargin=1in}
+\geometry{a4paper,hmargin=1cm,vmargin=2cm}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -206,7 +208,7 @@
 \begin{enumerate}
 	\item 图所示的悬臂梁，长度为$l$，高度为$h$，$l>>h$，在上边界受匀布荷载$q$，试检验应力函数$\varPhi=Ay^5+Bx^2y^3+Cy^3+Dx^2+Ex^2y$能否成为此问题的解？如可以，试求出应力分量。
 	
-	\begin{minipage}{0.4\textwidth}
+	\begin{minipage}{6cm}
 		\begin{tikzpicture}
 			\draw[very thick,->] (0,0) node[left]{$O$} -- (6,0) node[above]{$x$};
 			\draw[very thick,->] (0,0) -- (0,-2) node[right]{$y$};
@@ -228,12 +230,18 @@
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.5\textwidth}
+	\begin{minipage}{0.55\textwidth}
 		应力函数$\Phi$需满足应力函数表示的相容方程：
-		$$\frac{\partial^4\varPhi}{\partial x^4}+2\frac{\partial^4 \varPhi}{\partial x^2 \partial y^2}+\frac{\partial^4 \varPhi}{\partial y^4}=0$$
+		\begin{equation}
+			\frac{\partial^4\varPhi}{\partial x^4}+2\frac{\partial^4 \varPhi}{\partial x^2 \partial y^2}+\frac{\partial^4 \varPhi}{\partial y^4}=0 \label{eq:应力函数表示的相容方程}
+		\end{equation}
 		再满足边界条件，求得待定系数后代入平衡微分方程全解求应力分量：
-		$$\sigma_x = \frac{\partial^2 \varPhi}{\partial y^2}-f_x x,\sigma_y=\frac{\partial^2 \varPhi}{\partial x^2}-f_y y,\tau_{xy}=-\frac{\partial^2 \varPhi}{\partial x \partial y}$$
+		\begin{equation}
+			\sigma_x = \frac{\partial^2 \varPhi}{\partial y^2}-f_x x,\sigma_y=\frac{\partial^2 \varPhi}{\partial x^2}-f_y y,\tau_{xy}=-\frac{\partial^2 \varPhi}{\partial x \partial y}\label{eq:平衡微分方程全解}
+		\end{equation}
 	\end{minipage}
+
+	\answerPar{2阶4阶偏导：}
 
 	\begin{minipage}{0.45\textwidth}
 		\begin{align*}
@@ -244,9 +252,59 @@
 	\end{minipage}
 	\begin{minipage}{0.45\textwidth}
 		\begin{align*}
-			\frac{\partial^4\varPhi}{\partial x4}=
+			\frac{\partial^4\varPhi}{\partial x4}&=0 \\
+			\frac{\partial^4 \varPhi}{\partial x^4}&=120Ay \\
+			\frac{\partial^4 \varPhi}{\partial x^2 \partial y^2}&=12By
 		\end{align*}
 	\end{minipage}
+
+	\answerPar{边界条件：}
+
+	\begin{minipage}{0.45\textwidth}
+		\answerPar{上边界：}$y=-\frac{h}{2}$
+		\begin{gather*}
+			l=0,m=-1 \\
+			-\tau_{xy}=0 \\
+			-\sigma_y=q
+		\end{gather*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\answerPar{下边界：}$y=\frac{h}{2}$
+		\begin{gather*}
+			l=0,m=1 \\
+			\tau_{xy}=0 \\
+			\sigma_y=0
+		\end{gather*}
+	\end{minipage}
+
+	\answerPar{代入公式\eqref{eq:应力函数表示的相容方程}：}
+
+	\begin{gather*}
+		0+24By+120Ay=0 \rightarrow B+5A=0 \rightarrow B=-5A
+	\end{gather*}
+
+	\answerPar{代入公式\eqref{eq:平衡微分方程全解}：}
+
+	\begin{align*}
+		-6Bx(-\frac{h}{2})^2-2Ex=0 & \rightarrow E=-\frac{3}{4}Bh^2 \\
+		2B(-\frac{h}{2})^3+2D+2E(-\frac{h}{2})=-q & \rightarrow -\frac{1}{4}Bh^3+2D-Eh=-q \\
+		2B(\frac{h}{2})^3+2D+2E\frac{h}{2}=0 & \rightarrow \frac{1}{4}Bh^3+2D+Eh=0
+	\end{align*}
+
+	\answerPar{4个等式对应4个未知量，求解得：}
+
+	\begin{equation*}
+		A=\frac{q}{5h^3}, \quad B=-\frac{q}{h^3}, \quad D=-\frac{q}{4}, \quad E= \frac{3q}{4h}
+	\end{equation*}
+
+	\answerPar{该应力函数能成为此问题的解。应力分量：}
+
+	\begin{align*}
+		\sigma_x&=\frac{4q}{h^3}y^3-\frac{6q}{h^3}x^2y+6Cy \\
+		\sigma_y&=-\frac{2q}{h^3}y^3-\frac{q}{2}+\frac{3q}{2h}y \\
+		\tau_{xy}&=-\frac{6q}{h^3}xy^2+\frac{3q}{2h}x
+	\end{align*}
 
 	\item 如图所示的矩形截面柱体，在顶部受有集中力$\boldsymbol{F}$和力矩$\boldsymbol{M}=\frac{Fb}{2}$的作用，试用应力函数$\varPhi=Ax^3+Bx^2$求解图示问题的应力及位移，设在$A$点的位移和转角均为零。
 	
