@@ -11,7 +11,7 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-f",
-                "-lualatex",
+                "-pdflua",
                 "-outdir=%OUTDIR%/build",
                 "-auxdir=%OUTDIR%/build",
                 "%DOC%"
