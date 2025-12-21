@@ -16,7 +16,7 @@
 \usepackage{multirow}
 \usepackage{tabularx}
 \usepackage{tikz}
-\usepackage[backend=biber,style=gb7714-2015ms]{biblatex}
+\usepackage[backend=biber,style=gb7714-2015,gbcitelabel=bracket,gbbiblabel=bracket,autocite=superscript]{biblatex}
 
 % Tikz
 \usetikzlibrary{intersections,calc,shapes.callouts,shapes.geometric,arrows.meta,positioning,decorations.pathmorphing,shapes}
@@ -50,19 +50,6 @@
 	}
 }
 
-% 语言设置
-\babelprovide[import,main]{chinese}
-\babelprovide[import]{english}
-
-% 字体设置
-% \setmainfont{Times New Roman}[BoldFont=SimHei]
-% \setmainjfont{NSimSun}[BoldFont=SimHei]
-% \setsansfont{SimHei}
-% \setsansjfont{SimHei}
-
-% \newjfontfamily{\heiti}{SimHei}
-% \newjfontfamily{\kaiti}{KaiTi}
-
 % 段落格式
 \linespread{1.2}
 \setlength{\parskip}{8pt}
@@ -72,7 +59,7 @@
 \hypersetup{colorlinks,allcolors=blue}
 
 % 纸张设置
-\geometry{a4paper,margin=1in}
+\geometry{a4paper,margin=2cm}
 
 % 参考文献
 \addbibresource{./bibliography.bib}
