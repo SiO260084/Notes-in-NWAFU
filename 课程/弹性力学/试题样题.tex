@@ -3,6 +3,7 @@
 
 \usepackage{geometry}
 \usepackage{xcolor}
+\usepackage{caption}
 \usepackage{tikz}
 \usepackage{float}
 \usepackage{amsmath}
@@ -60,6 +61,10 @@
 	\showCounter #4
 }}
 
+\title{高等工程力学期末考试样题}
+\author{石成玉}
+\date{\today}
+
 \begin{document}
 
 \section{单项选择题}
@@ -89,26 +94,45 @@
 
 \begin{enumerate}
 	\item 弹性力学边界条件可以分为\answerWord{位移}边界条件、\answerWord{应变}边界条件和\answerWord{混合}边界条件。
-	\item 按应力求解平面问题时，应力分量应当满足\answerWord{平衡微分}方程和\answerWord{相容}方程。此外，应力分量在边界上还应满足\answerWord{应力边界条件}。
-	\item 杆件在竖直方向受到体力分量$f_y=f（常量）$的作用，其应力分量为：$\sigma_x=C_1 x$；$\sigma_y=C_2 y+C_3$；$\tau_xy=0$，支承条件如图\ref{pic:1}所示。则$C_1=$\answerWord{$0$}；$C_2=$\answerWord{$0$}；$C_3=$\answerWord{$f$}。
-	\item 对平面应变问题，只需将平面应力问题的物理方程中材料常数作替换即可，即$E\rightarrow$\answerWord{$\frac{E}{1-\mu^2}$}；$\mu\rightarrow$\answerWord{$\frac{1}{1-\mu^2}$}。
+	
+	\begin{minipage}{0.7\linewidth}
+		\item 按应力求解平面问题时，应力分量应当满足\answerWord{平衡微分}方程和\answerWord{相容}方程。此外，应力分量在边界上还应满足\answerWord{应力边界条件}。
+		\item 杆件在竖直方向受到体力分量$f_y=f（常量）$的作用，其应力分量为：$\sigma_x=C_1 x$；$\sigma_y=C_2 y+C_3$；$\tau_xy=0$，支承条件如图\ref{pic:1}所示。则$C_1=$\answerWord{$0$}；$C_2=$\answerWord{$0$}；$C_3=$\answerWord{$f$}。
+		\item 对平面应变问题，只需将平面应力问题的物理方程中材料常数作替换即可，即$E\rightarrow$\answerWord{$\frac{E}{1-\mu^2}$}；$\mu\rightarrow$\answerWord{$\frac{1}{1-\mu^2}$}。
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.3\linewidth}
+		\centering
+		\begin{tikzpicture}
+			\draw[thick,->] (0,0) -- (3,0) node[below right]{$X$};
+			\draw[thick,->] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
+			\draw (0.5,0) rectangle (2.5,4);
+			\draw (2.7,4) -- (3.3,4);
+			\draw[<->] (3,4) -- node[right]{$h$} (3,0);
+			\foreach \x in {0.2,0.4,...,3}{
+				\draw (\x,0) -- ({\x-0.5},-0.4);
+			}
+		\end{tikzpicture}
+		\captionof{figure}{}
+		\label{pic:1}
+	\end{minipage}
 \end{enumerate}
 
-\begin{figure}[H]
-	\centering
-	\begin{tikzpicture}
-		\draw[thick,->] (0,0) -- (3,0) node[below right]{$X$};
-		\draw[thick,->] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
-		\draw (0.5,0) rectangle (2.5,4);
-		\draw (2.7,4) -- (3.3,4);
-		\draw[<->] (3,4) -- node[right]{$h$} (3,0);
-		\foreach \x in {0.2,0.4,...,3}{
-			\draw (\x,0) -- ({\x-0.5},-0.4);
-		}
-	\end{tikzpicture}
-	\caption{}
-	\label{pic:1}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\begin{tikzpicture}
+%		\draw[thick,->] (0,0) -- (3,0) node[below right]{$X$};
+%		\draw[thick,->] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
+%		\draw (0.5,0) rectangle (2.5,4);
+%		\draw (2.7,4) -- (3.3,4);
+%		\draw[<->] (3,4) -- node[right]{$h$} (3,0);
+%		\foreach \x in {0.2,0.4,...,3}{
+%			\draw (\x,0) -- ({\x-0.5},-0.4);
+%		}
+%	\end{tikzpicture}
+%	\caption{}
+%	\label{pic:1}
+%\end{figure}
 
 \section{简答题}
 
@@ -122,7 +146,7 @@
 	\item 图示水坝（楔形体），试写出其应力边界条件。
 
 
-	\begin{minipage}{0.35\textwidth}
+	\begin{minipage}{0.3\linewidth}
 		\begin{tikzpicture}
 			\draw[thick,->] (1,0) -- (-3,0) node[above]{$x$};
 			\draw[thick,->] (0,0) node[above]{$o$} -- (0,-4) node[left]{$y$};
@@ -137,7 +161,7 @@
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.55\textwidth}
+	\begin{minipage}{0.7\linewidth}
 		$l$为单位长度面法线与$x$轴的投影，$m$为单位长度面法线与$y$轴的投影。
 
 		$f_x$和$f_y$的正负同坐标轴方向。
@@ -148,7 +172,7 @@
 	\end{minipage}
 
 	\answerPar{
-	\begin{minipage}{0.5\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		左边界：
 		\begin{gather*}
 			l=\cos \beta, m=-\sin \beta \\
@@ -158,7 +182,7 @@
 			\end{cases}
 		\end{gather*}
 	\end{minipage}
-	\begin{minipage}{0.4\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		右边界：
 		\begin{gather*}
 			l=-1,m=0 \\
@@ -208,7 +232,7 @@
 \begin{enumerate}
 	\item 图所示的悬臂梁，长度为$l$，高度为$h$，$l>>h$，在上边界受匀布荷载$q$，试检验应力函数$\varPhi=Ay^5+Bx^2y^3+Cy^3+Dx^2+Ex^2y$能否成为此问题的解？如可以，试求出应力分量。
 	
-	\begin{minipage}{6cm}
+	\begin{minipage}{0.4\linewidth}
 		\begin{tikzpicture}
 			\draw[very thick,->] (0,0) node[left]{$O$} -- (6,0) node[above]{$x$};
 			\draw[very thick,->] (0,0) -- (0,-2) node[right]{$y$};
@@ -230,8 +254,8 @@
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.55\textwidth}
-		应力函数$\Phi$需满足应力函数表示的相容方程：
+	\begin{minipage}{0.6\linewidth}
+		应力函数$\varPhi$需满足应力函数表示的相容方程：
 		\begin{equation}
 			\frac{\partial^4\varPhi}{\partial x^4}+2\frac{\partial^4 \varPhi}{\partial x^2 \partial y^2}+\frac{\partial^4 \varPhi}{\partial y^4}=0 \label{eq:应力函数表示的相容方程}
 		\end{equation}
@@ -243,14 +267,14 @@
 
 	\answerPar{2阶4阶偏导：}
 
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\begin{align*}
 			\frac{\partial^2\varPhi}{\partial x^2}&=2By^3+2D+2Ey \\
 			\frac{\partial^2\varPhi}{\partial y^2}&=20Ay^3+6Bx^2y+6Cy \\
 			\frac{\partial^2 \varPhi}{\partial x\partial y}&=6Bxy^2+2Ex
 		\end{align*}
 	\end{minipage}
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\begin{align*}
 			\frac{\partial^4\varPhi}{\partial x^4}&=0 \\
 			\frac{\partial^4 \varPhi}{\partial x^4}&=120Ay \\
@@ -260,7 +284,7 @@
 
 	\answerPar{边界条件：}
 
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\answerPar{上边界：}$y=-\frac{h}{2}$
 		\begin{gather*}
 			l=0,m=-1 \\
@@ -269,7 +293,7 @@
 		\end{gather*}
 	\end{minipage}
 	\hfill
-	\begin{minipage}{0.45\textwidth}
+	\begin{minipage}{0.5\linewidth}
 		\answerPar{下边界：}$y=\frac{h}{2}$
 		\begin{gather*}
 			l=0,m=1 \\
@@ -308,24 +332,97 @@
 
 	\item 如图所示的矩形截面柱体，在顶部受有集中力$\boldsymbol{F}$和力矩$\boldsymbol{M}=\frac{Fb}{2}$的作用，试用应力函数$\varPhi=Ax^3+Bx^2$求解图示问题的应力及位移，设在$A$点的位移和转角均为零。
 	
-	\begin{tikzpicture}
-		\draw[very thick,->] (0,0) node[below left]{$O$}-- (2.5,0) node[below right]{$x$};
-		\draw[very thick,->] (0,0) -- (0,-6) node[below right]{$y$};
-		\draw[thick] (-1,0) rectangle (1,-5);
-		\draw (-2,-5) -- (2,-5);
-		\begin{scope}
-			\clip (-2,-5) rectangle (2,-5.5);
-			\foreach \x in {-2,-1.9,...,3}{
-				\draw (\x,-5) -- ++(-0.5,-0.5);
-			}
-		\end{scope}
-		\draw[<->] (1.5,0) -- (1.5,-5) node[midway,right]{$h(h>>b,\delta=1)$};
-		\draw[<->] (-1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
-		\draw[<->] (1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
-		\node[above right] at (0,-5) {$A$};
-		\draw[->] (0,1) -- (0,0) node[pos=0,above]{$\boldsymbol{F}$};
-		\draw[->] (135:0.5) arc (135:45:0.5) node[pos=1,right]{$\boldsymbol{M}=\frac{Fb}{2}$};
-	\end{tikzpicture}
+	\begin{minipage}{0.4\linewidth}
+		\begin{tikzpicture}
+			\draw[very thick,->] (0,0) node[below left]{$O$}-- (2.5,0) node[below right]{$x$};
+			\draw[very thick,->] (0,0) -- (0,-6) node[below right]{$y$};
+			\draw[thick] (-1,0) rectangle (1,-5);
+			\draw (-2,-5) -- (2,-5);
+			\begin{scope}
+				\clip (-2,-5) rectangle (2,-5.5);
+				\foreach \x in {-2,-1.9,...,3}{
+					\draw (\x,-5) -- ++(-0.5,-0.5);
+				}
+			\end{scope}
+			\draw[<->] (1.5,0) -- (1.5,-5) node[midway,right]{$h(h>>b,\delta=1)$};
+			\draw[<->] (-1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+			\draw[<->] (1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+			\node[above right] at (0,-5) {$A$};
+			\draw[->] (0,1) -- (0,0) node[pos=0,above]{$\boldsymbol{F}$};
+			\draw[->] (135:0.5) arc (135:45:0.5) node[pos=1,right]{$\boldsymbol{M}=\frac{Fb}{2}$};
+		\end{tikzpicture}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.6\linewidth}
+		利用公式\eqref{eq:应力函数表示的相容方程}和\eqref{eq:平衡微分方程全解}求解出艾里应力函数中的常数。再根据平面问题的物理方程：
+		\begin{equation}
+			\left\{
+				\begin{aligned}
+					\varepsilon_x=\frac{1}{E}(\sigma_x-\mu\sigma_y) \\
+					\varepsilon_y=\frac{1}{E}(\sigma_y-\mu\sigma_x) \\
+					\gamma_{xy}=\frac{2(1+\mu)}{E}\tau_{xy}
+				\end{aligned}
+			\right.
+			\label{eq:平面问题的物理方程}
+		\end{equation}
+		和平面问题的几何方程：
+		\begin{equation}
+			\varepsilon_x=\frac{\partial u}{\partial x},\,\varepsilon=\frac{\partial v}{\partial y},\,\gamma=\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y}
+			\label{eq:平面问题的几何方程}
+		\end{equation}
+		求解位移。
+	\end{minipage}
+
+	\begin{minipage}[t]{0.5\linewidth}
+		\answerPar{应力分量：}
+		\begin{align*}
+			\sigma_x&=\frac{\partial^2\varPhi}{\partial y^2}=0 \\
+			\sigma_y&=\frac{\partial^2\varPhi}{\partial x^2}=6Ax+2B \\
+			\tau_{yx}&=0
+		\end{align*}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.5\linewidth}
+		\answerPar{边界条件：}
+		\begin{gather*}
+			y=0:\ l=0,\;m=-1 \\
+			\int_{-b}^{b}-\tau_{yx}\mathrm{d}x=0 \\
+			\int_{-b}^{b}-\sigma_y\mathrm{d}x=\boldsymbol{F} \\
+			\int_{-b}^{b}-\sigma_y y\mathrm{d}x=\frac{\boldsymbol{Fb}}{2} \\
+		\end{gather*}
+	\end{minipage}
+
+	\answerPar{代入得：}
+	\begin{equation*}
+		\begin{cases}
+			\int_{-b}^{b}6Ax+2B\mathrm{d}x=-\boldsymbol{F} \\
+			\int_{-b}^{b}6Ax^2+2Bx\mathrm{d}x=-\frac{\boldsymbol{Fb}}{2}
+		\end{cases}
+		\Longrightarrow
+		\begin{cases}
+			A=-\frac{F}{8b^2} \\
+			B=-\frac{F}{4b}
+		\end{cases}
+	\end{equation*}
+	\answerPar{故：}
+	\begin{equation*}
+%		\color{blue}
+		\sigma_y=-\frac{3F}{4b^2}x-\frac{F}{2b}
+	\end{equation*}
+	\answerPar{代入公式\eqref{eq:平面问题的几何方程}：}
+	\begin{equation*}
+		\varepsilon_y=\frac{1}{E}\sigma_y=\frac{\partial u}{\partial y} \Longrightarrow u=\frac{1}{E}\sigma_yy+C(x)
+	\end{equation*}
+	\answerPar{根据题目$A$点的位移和转角均为零，代入$y=h$、$u=0$、$\omega=0$：}
+	\begin{equation*}
+		C(x)=-\frac{1}{E}\sigma_yh \Longrightarrow u=\frac{1}{E}\sigma_y(y-h)
+	\end{equation*}
+	\answerPar{故：}
+	\begin{equation*}
+%		\color{blue}
+		u=\frac{1}{E}\left(\frac{3F}{4b^2}+\frac{F}{2b}\right)(h-y)
+	\end{equation*}
+
 \end{enumerate}
 
 \end{document}
