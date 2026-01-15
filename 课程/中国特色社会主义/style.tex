@@ -1,0 +1,85 @@
+\usepackage[colorlinks,allcolors=blue]{hyperref}
+\usepackage[a4paper,hmargin=2cm,vmargin=2cm]{geometry}
+\usepackage{xparse}
+\usepackage{unicode-math}
+\usepackage{amsmath}
+\usepackage[backend=biber,style=gb7714-2015,autocite=superscript]{biblatex}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+
+% 字体
+% \setmainfont{Times New Roman}
+% \setCJKmainfont{NSimSun}[AutoFakeBold=1.5]
+\newCJKfontfamily{\xingkai}{STXingkai}[Renderer=HarfBuzz]
+
+% 布局
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0cm}
+\fancyfoot[C]{\thepage}
+
+% 封面
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}
+	\centering
+
+	\vspace{5ex}
+
+	\makebox[15em][s]{\zihao{3} \xingkai 西北农林科技大学}
+
+	\vspace{10ex}
+
+	{\zihao{2} 研究生课程论文}
+
+	\vspace{12ex}
+
+	{\zihao{-4}（课程名称：\underline{《中国特色社会主义理论与实践研究》}）}
+
+	\vfill
+
+	\begin{spacing}{1.16}\zihao{-3}\setlength{\parskip}{8pt}
+		\makebox[6em][s]{年级、姓名}：\underline{\makebox[20em][c]{25级 \@author}}
+
+		\makebox[6em][s]{学院、专业}：\underline{\makebox[20em][c]{机械与电子工程学院 机械专业}}
+
+		\makebox[6em][s]{结业成绩}：\underline{\makebox[20em][c]{}}
+
+		\makebox[6em][s]{结业学期}：\underline{\makebox[20em][c]{2025年秋季学期}}
+
+		\makebox[6em][s]{任课老师姓名}：\underline{\makebox[20em][c]{方建斌}}
+	\end{spacing}
+
+\end{titlepage}
+
+}
+\makeatother
+
+% 标题
+\makeatletter
+\newcommand{\articleTitle}{\begin{center}\zihao{3}\heiti\@title\end{center}}
+\makeatother
+
+
+% 摘要
+\renewenvironment{abstract}{
+
+	\begin{center}
+		\Large\bfseries
+		摘\hspace{1em}要
+	\end{center}
+
+	\normalfont\normalsize
+
+}{}
+
+% 关键词
+\NewDocumentCommand{\keywords}{m o o o o o o o o}{
+
+	{
+		{\bfseries 关键词} #1\IfNoValueTF{#2}{}{；#2}\IfNoValueTF{#3}{}{；#3}\IfNoValueTF{#4}{}{；#4}\IfNoValueTF{#5}{}{；#5}\IfNoValueTF{#6}{}{；#6}\IfNoValueTF{#7}{}{；#7}\IfNoValueTF{#8}{}{；#8}\IfNoValueTF{#9}{}{；#9}
+	}
+
+	\normalfont\normalsize
+
+}

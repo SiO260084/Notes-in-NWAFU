@@ -1,0 +1,83 @@
+\DocumentMetadata{pdfversion=1.7,pdfstandard=A-3a,lang=zh-CN,tagging=on}
+\documentclass[12pt,fontset=windows,UTF8]{ctexart}
+\usepackage[a4paper,hmargin=1cm,vmargin=2cm]{geometry}
+\usepackage[main=chinese,english]{babel}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+
+\setmathfont{STIX Two Math}
+
+\title{工程数学公式}
+\author{石成玉}
+\date{\today}
+
+\begin{document}
+
+\section{公式}
+
+\subsection{欧拉公式}
+
+\begin{equation}
+	e^{ix}=\cos x + i \sin x \label{eq:欧拉公式}
+\end{equation}
+
+\subsection{三角函数公式}
+
+\subsubsection{和差化积公式}
+
+\begin{equation}
+	\begin{aligned}
+		\sin \alpha + \sin \beta & = 2 \sin \frac{\alpha+\beta}{2} \cos\frac{\alpha+\beta}{2} \\
+		\sin \alpha - \sin \beta & = 2 \cos \frac{\alpha+\beta}{2} \sin\frac{\alpha+\beta}{2} \\
+		\cos\alpha + \cos\beta & = 2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+		\cos\alpha - \cos\beta & = -2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} \\
+		\tan\alpha + \tan\beta & = \frac{\sin(\alpha+\beta)}{\cos\alpha\cos\beta}
+	\end{aligned}
+\end{equation}
+
+\subsubsection{积化和差公式}
+
+\begin{equation}
+	\begin{aligned}
+		\cos\alpha\sin\beta & = \frac{1}{2}\left[\sin(\alpha+\beta) - \sin(\alpha+\beta)\right] \\
+		\sin\alpha\sin\beta & =-\frac{1}{2}\left[\cos(\alpha+\beta)-\cos(\alpha-\beta)\right] \\
+		\cos\alpha\cos\beta & =\frac{1}{2}\left[\cos(\alpha+\beta)-\cos(\alpha-\beta)\right]
+	\end{aligned}
+\end{equation}
+
+\subsubsection{二倍角公式}
+
+\begin{equation}
+	\begin{aligned}
+		\sin(2\alpha) & =2\sin\alpha\cos\alpha=\frac{2\tan\alpha}{1+\tan^2\alpha} \\
+		\cos(2\alpha) & = \cos^2\alpha - \sin^2\alpha = 2\cos^2\alpha - 1 = 1 - 2\sin^2\alpha = \frac{1-\tan^2\alpha}{1+\tan^2\alpha} \\
+		\tan(2\alpha) & = \frac{2\tan\alpha}{1-\tan^2\alpha}
+	\end{aligned}
+\end{equation}
+
+\section{分类问题}
+
+\begin{table}[H]
+	\caption{定解问题}
+	\label{tb:定解问题}
+	\begin{tabularx}{\linewidth}{
+		>{\hsize=0.4\hsize\linewidth=\hsize\centering\arraybackslash}X
+		>{\hsize=0.2\hsize\linewidth=\hsize\centering\arraybackslash}X
+		>{\hsize=0.2\hsize\linewidth=\hsize\centering\arraybackslash}X
+		>{\hsize=0.2\hsize\linewidth=\hsize\centering\arraybackslash}X
+	}
+		\toprule
+		方程 & 边界条件 & 初值条件 & 方程类型 \\
+		\midrule
+		波动方程 & 有 & 有 & 双曲型方程 \\
+		热传导方程 & 有 & 有 & 抛物型方程 \\
+		拉普拉斯方程 & 有 & 无 & 椭圆型方程 \\
+		泊松方程 & 有 & 无 & 椭圆型方程 \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\end{document}

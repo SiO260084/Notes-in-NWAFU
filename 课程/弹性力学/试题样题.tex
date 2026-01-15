@@ -6,11 +6,13 @@
 \usepackage{caption}
 \usepackage{tikz}
 \usepackage{float}
+\usepackage{unicode-math}
 \usepackage{amsmath}
 \usepackage{lua-ul}
-\usepackage{unicode-math}
 \usepackage{fancyhdr}
 \usepackage{hyperref}
+
+\setmathfont{STIX Two Math}
 
 \hypersetup{allcolors=blue,colorlinks}
 
@@ -81,7 +83,7 @@
 	
 	\resetCounter\selectionsTWOxTWO{应力与体力}{应力与面力}{应力与应变}{应变与位移}
 	
-	\item 要使函数$\Phi(x,y)=axy^5+bx^5y$能作为应力函数，$a$与$b$的关系是（\answerWord{C}）
+	\item 要使函数$\varPhi(x,y)=axy^5+bx^5y$能作为应力函数，$a$与$b$的关系是（\answerWord{C}）
 
 	\resetCounter\selectionsFOURxONE{$a$和$b$可任意取值}{$a=b$}{$a=-b$}{$a=\frac{b}{2}$}
 
@@ -104,11 +106,11 @@
 	\begin{minipage}{0.3\linewidth}
 		\centering
 		\begin{tikzpicture}
-			\draw[thick,->] (0,0) -- (3,0) node[below right]{$X$};
-			\draw[thick,->] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
+			\draw[thick,-stealth] (0,0) -- (3.5,0) node[below right]{$X$};
+			\draw[thick,-stealth] (1.5,0) node[above left]{$O$} -- (1.5,5) node[right]{$Y$};
 			\draw (0.5,0) rectangle (2.5,4);
 			\draw (2.7,4) -- (3.3,4);
-			\draw[<->] (3,4) -- node[right]{$h$} (3,0);
+			\draw[stealth-stealth] (3,4) -- node[right]{$h$} (3,0);
 			\foreach \x in {0.2,0.4,...,3}{
 				\draw (\x,0) -- ({\x-0.5},-0.4);
 			}
@@ -148,16 +150,16 @@
 
 	\begin{minipage}{0.3\linewidth}
 		\begin{tikzpicture}
-			\draw[thick,->] (1,0) -- (-3,0) node[above]{$x$};
-			\draw[thick,->] (0,0) node[above]{$o$} -- (0,-4) node[left]{$y$};
+			\draw[thick,-stealth] (1,0) -- (-3,0) node[above]{$x$};
+			\draw[thick,-stealth] (0,0) node[above]{$o$} -- (0,-4) node[left]{$y$};
 			\draw[decoration={snake}] (0,0) -- (-2.2,-3) decorate{(-2.2,-3) -- (0,-3)};
-			\draw[<->] (0,-1) arc (270:{180+atan(3/2.2)}:1) node[midway,below]{$\beta$};
-			\foreach \t in {0,1,...,10}{
-				\draw[->] ({0.1*\t},{-0.3*\t}) -- (0,{-0.3*\t});
+			\draw[stealth-stealth] (0,-1) arc (270:{180+atan(3/2.2)}:1) node[midway,below]{$\beta$};
+			\foreach \t in {1,2,...,10}{
+				\draw[-stealth] ({0.1*\t},{-0.3*\t}) -- (0,{-0.3*\t});
 			}
 			\draw (0,0) -- ({0.1*10},{-0.3*10}) node[above right]{$\gamma_1 y$};
 			\draw ({0.1*5},{-0.3*5}) -- ({0.1*10},{-0.3*5});
-			\draw[<->] ({0.1*8},0) -- ({0.1*8},{-0.3*5}) node[midway,fill=white]{$y$};
+			\draw[stealth-stealth] ({0.1*8},0) -- ({0.1*8},{-0.3*5}) node[midway,fill=white]{$y$};
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
@@ -168,7 +170,7 @@
 
 		$\sigma_x$、$\sigma_y$：向外为正，向内为负。
 
-		$\tau_{xy}$：以坐标轴方向为参考正负为$(\sigma_x \; \mathrm{or} \; \sigma_y)\times\tau_{xy}$。
+		$\tau_{xy}$：以坐标轴方向为参考正负为$(\sigma_x \; \symrm{or} \; \sigma_y)\times\tau_{xy}$。
 	\end{minipage}
 
 	\answerPar{
@@ -195,6 +197,31 @@
 	}
 
 	\item 以三节点三角形单元为例，说明有限元分析法对离散结构的每个单元进行单元分析的具体内容和步骤。
+
+	\begin{minipage}{0.45\linewidth}
+		\begin{tikzpicture}
+			\draw[latex-latex] (0,5)node[left]{$y$} -- (0,0)node[below left]{$O$} -- (5,0)node[below]{$x$};
+			\coordinate (j) at (1,2);
+			\coordinate (m) at (4,0.6);
+			\coordinate (i) at (3,4);
+			\draw[thick] (j)node[left]{$j$} -- (m)node[below]{$m$} -- (i)node[left]{$i$} -- cycle;
+			\draw[very thick,-stealth] (j) -- ++(0,1)node[left]{$v_j$}node[right]{$F_{jy}$};
+			\draw[very thick,-stealth] (j) -- ++(1,0)node[above right]{$u_j$}node[below right]{$F_{jx}$};
+			\draw[very thick,-stealth] (m) -- ++(0,1) node[above]{$v_m$} node[right,yshift=-0.3cm]{$F_{my}$};
+			\draw[very thick,-stealth] (m) -- ++(1,0)node[above right]{$u_m$}node[below right]{$F_{mx}$};
+			\draw[very thick,-stealth] (i) -- ++(1,0)node[above right]{$u_i$}node[below right]{$F_{ix}$};
+			\draw[very thick,-stealth] (i) -- ++(0,1)node[left]{$v_i$}node[right]{$F_{iy}$};
+			\coordinate (c) at (5.5,5.5);
+			\draw[very thick,-stealth] (c) -- ++(-1,0) node[above]{$-F_{ix}$};
+			\draw[very thick,-stealth] (c) -- ++(0,-1) node[right]{$-F_{iy}$};
+			\draw[thick,fill=white] (c) circle(0.1);
+		\end{tikzpicture}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.55\linewidth}
+		\answerPar{见\textit{弹性力学简明教程}122页。}
+	\end{minipage}
+
 	\item 边长为$1$的正方边形板结构分为\uppercase\expandafter{\romannumeral1}，\uppercase\expandafter{\romannumeral2}两个单元，单元编号、结点整体编码及各个单元局部编码如图所示，设通过单元分析已经得到这两个单元的刚度矩阵分别为$K^{(1)}$、$K^{(2)}$（即：单元刚度矩阵元素已知，其分块子矩阵可用符号表示）。试求这两个单元的刚度贡献矩阵$[K]^{(1)}$、$[K]^{(2)}$及离散系统的整体刚度矩阵$[K]$。
 	
 	\begin{tikzpicture}
@@ -204,8 +231,7 @@
 		\coordinate (P1) at (0,4);
 		\coordinate (P2) at (4,0);
 		\coordinate (P3) at (4,4);
-		\draw[->,thick] (O) -- (Y);
-		\draw[->,thick] (O) -- (X);
+		\draw[stealth-stealth,thick] (X) -- (O) -- (Y);
 		\draw (P1) -- (P3);
 		\draw (P3) -- (P2);
 		\draw (P1) -- (P2);
@@ -234,15 +260,14 @@
 	
 	\begin{minipage}{0.4\linewidth}
 		\begin{tikzpicture}
-			\draw[very thick,->] (0,0) node[left]{$O$} -- (6,0) node[above]{$x$};
-			\draw[very thick,->] (0,0) -- (0,-2) node[right]{$y$};
+			\draw[very thick,stealth-stealth] (0,-2) node[right]{$y$} -- (0,0) node[left]{$O$} -- (6,0) node[above]{$x$};
 			\draw[thick] (0,1) rectangle (5,-1);
 			\foreach \x in {0,0.5,...,5}{
-				\draw[->] (\x,1.5) -- (\x,1);
+				\draw[-stealth] (\x,1.5) -- (\x,1);
 			}
-			\draw[<->] (2.5,0) -- (2.5,1) node[midway,right]{$\frac{h}{2}$};
-			\draw[<->] (2.5,0) -- (2.5,-1)node[midway,right]{$\frac{h}{2}$};
-			\draw[<->] (0,-1.25) -- (5,-1.25) node[midway,below]{$l(l>>h)$};
+			\draw[stealth-stealth] (2.5,0) -- (2.5,1) node[midway,right]{$\frac{h}{2}$};
+			\draw[stealth-stealth] (2.5,0) -- (2.5,-1)node[midway,right]{$\frac{h}{2}$};
+			\draw[stealth-stealth] (0,-1.25) -- (5,-1.25) node[midway,below]{$l(l>>h)$};
 			\draw[very thick] (5,2) -- (5,-2);
 			\begin{scope}
 				\clip (5.05,2) rectangle (5.55,-2);
@@ -284,7 +309,7 @@
 
 	\answerPar{边界条件：}
 
-	\begin{minipage}{0.5\linewidth}
+	\begin{minipage}[t]{0.33\linewidth}
 		\answerPar{上边界：}$y=-\frac{h}{2}$
 		\begin{gather*}
 			l=0,m=-1 \\
@@ -292,13 +317,21 @@
 			-\sigma_y=q
 		\end{gather*}
 	\end{minipage}
-	\hfill
-	\begin{minipage}{0.5\linewidth}
+	\begin{minipage}[t]{0.33\linewidth}
 		\answerPar{下边界：}$y=\frac{h}{2}$
 		\begin{gather*}
 			l=0,m=1 \\
 			\tau_{xy}=0 \\
 			\sigma_y=0
+		\end{gather*}
+	\end{minipage}
+	\begin{minipage}[t]{0.33\linewidth}
+		\answerPar{左边界：}$x=0$
+		\begin{gather*}
+			l=-1,m=0 \\
+			\int_{-\frac{h}{2}}^{\frac{h}{2}}-\sigma_x\symrm{d}y=0 \\
+			\int_{-\frac{h}{2}}^{\frac{h}{2}}-\tau_{xy}\symrm{d}y=0 \\
+			\int_{-\frac{h}{2}}^{\frac{h}{2}}-\sigma_x\cdot y\symrm{d}y=0
 		\end{gather*}
 	\end{minipage}
 
@@ -313,13 +346,14 @@
 	\begin{align*}
 		-6Bx(-\frac{h}{2})^2-2Ex=0 & \rightarrow E=-\frac{3}{4}Bh^2 \\
 		2B(-\frac{h}{2})^3+2D+2E(-\frac{h}{2})=-q & \rightarrow -\frac{1}{4}Bh^3+2D-Eh=-q \\
-		2B(\frac{h}{2})^3+2D+2E\frac{h}{2}=0 & \rightarrow \frac{1}{4}Bh^3+2D+Eh=0
+		2B(\frac{h}{2})^3+2D+2E\frac{h}{2}=0 & \rightarrow \frac{1}{4}Bh^3+2D+Eh=0 \\
+		\int_{-\frac{h}{2}}^{\frac{h}{2}}(20Ay^3+6Bx^2y+6Cy)y\symrm{d}y=0 & \rightarrow C=\frac{1}{2}A
 	\end{align*}
 
 	\answerPar{4个等式对应4个未知量，求解得：}
 
 	\begin{equation*}
-		A=\frac{q}{5h^3}, \quad B=-\frac{q}{h^3}, \quad D=-\frac{q}{4}, \quad E= \frac{3q}{4h}
+		A=\frac{q}{5h^3}, \quad B=-\frac{q}{h^3}, \quad C=\frac{q}{10h^3}, \quad D=-\frac{q}{4}, \quad E= \frac{3q}{4h}
 	\end{equation*}
 
 	\answerPar{该应力函数能成为此问题的解。应力分量：}
@@ -330,12 +364,11 @@
 		\tau_{xy}&=-\frac{6q}{h^3}xy^2+\frac{3q}{2h}x
 	\end{align*}
 
-	\item 如图所示的矩形截面柱体，在顶部受有集中力$\boldsymbol{F}$和力矩$\boldsymbol{M}=\frac{Fb}{2}$的作用，试用应力函数$\varPhi=Ax^3+Bx^2$求解图示问题的应力及位移，设在$A$点的位移和转角均为零。
+	\item 如图所示的矩形截面柱体，在顶部受有集中力$\symbfit{F}$和力矩$\symbfit{M}=\frac{Fb}{2}$的作用，试用应力函数$\varPhi=Ax^3+Bx^2$求解图示问题的应力及位移，设在$A$点的位移和转角均为零。
 	
 	\begin{minipage}{0.4\linewidth}
 		\begin{tikzpicture}
-			\draw[very thick,->] (0,0) node[below left]{$O$}-- (2.5,0) node[below right]{$x$};
-			\draw[very thick,->] (0,0) -- (0,-6) node[below right]{$y$};
+			\draw[very thick,stealth-stealth] (0,-6) node[below right]{$y$} -- (0,0) node[below left]{$O$}-- (2.5,0) node[below right]{$x$};
 			\draw[thick] (-1,0) rectangle (1,-5);
 			\draw (-2,-5) -- (2,-5);
 			\begin{scope}
@@ -344,12 +377,12 @@
 					\draw (\x,-5) -- ++(-0.5,-0.5);
 				}
 			\end{scope}
-			\draw[<->] (1.5,0) -- (1.5,-5) node[midway,right]{$h(h>>b,\delta=1)$};
-			\draw[<->] (-1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
-			\draw[<->] (1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+			\draw[stealth-stealth] (1.5,0) -- (1.5,-5) node[midway,right]{$h(h>>b,\delta=1)$};
+			\draw[stealth-stealth] (-1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
+			\draw[stealth-stealth] (1,-2.5) -- (0,-2.5) node[midway,above]{$b$};
 			\node[above right] at (0,-5) {$A$};
-			\draw[->] (0,1) -- (0,0) node[pos=0,above]{$\boldsymbol{F}$};
-			\draw[->] (135:0.5) arc (135:45:0.5) node[pos=1,right]{$\boldsymbol{M}=\frac{Fb}{2}$};
+			\draw[-stealth] (0,1) -- (0,0) node[pos=0,above]{$\symbfit{F}$};
+			\draw[-stealth] (135:0.5) arc (135:45:0.5) node[pos=1,right,yshift=0.2cm]{$\symbfit{M}=\frac{Fb}{2}$};
 		\end{tikzpicture}
 	\end{minipage}
 	\hfill
@@ -367,7 +400,7 @@
 		\end{equation}
 		和平面问题的几何方程：
 		\begin{equation}
-			\varepsilon_x=\frac{\partial u}{\partial x},\,\varepsilon=\frac{\partial v}{\partial y},\,\gamma=\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y}
+			\varepsilon_x=\frac{\partial u}{\partial x},\ \varepsilon_y=\frac{\partial v}{\partial y},\ \gamma_{xy}=\alpha+\beta=\frac{\partial v}{\partial x}+\frac{\partial u}{\partial y}
 			\label{eq:平面问题的几何方程}
 		\end{equation}
 		求解位移。
@@ -386,17 +419,17 @@
 		\answerPar{边界条件：}
 		\begin{gather*}
 			y=0:\ l=0,\;m=-1 \\
-			\int_{-b}^{b}-\tau_{yx}\mathrm{d}x=0 \\
-			\int_{-b}^{b}-\sigma_y\mathrm{d}x=\boldsymbol{F} \\
-			\int_{-b}^{b}-\sigma_y y\mathrm{d}x=\frac{\boldsymbol{Fb}}{2} \\
+			\int_{-b}^{b}-\tau_{yx}\symrm{d}x=0 \\
+			\int_{-b}^{b}-\sigma_y\symrm{d}x=\symbfit{F} \\
+			\int_{-b}^{b}-\sigma_y y\symrm{d}x=\frac{\symbfit{Fb}}{2} \\
 		\end{gather*}
 	\end{minipage}
 
 	\answerPar{代入得：}
 	\begin{equation*}
 		\begin{cases}
-			\int_{-b}^{b}6Ax+2B\mathrm{d}x=-\boldsymbol{F} \\
-			\int_{-b}^{b}6Ax^2+2Bx\mathrm{d}x=-\frac{\boldsymbol{Fb}}{2}
+			\int_{-b}^{b}6Ax+2B\symrm{d}x=-\symbfit{F} \\
+			\int_{-b}^{b}6Ax^2+2Bx\symrm{d}x=-\frac{\symbfit{Fb}}{2}
 		\end{cases}
 		\Longrightarrow
 		\begin{cases}
@@ -410,18 +443,38 @@
 		\sigma_y=-\frac{3F}{4b^2}x-\frac{F}{2b}
 	\end{equation*}
 	\answerPar{代入公式\eqref{eq:平面问题的几何方程}：}
+	\begin{gather*}
+		\varepsilon_x=-\frac{\mu}{E}(3Ax+2B)=\frac{\partial u}{\partial x} \Longrightarrow u=-\frac{\mu}{E}(3Ax^2+2Bx)+f_1(y) \\
+		\varepsilon_y=\frac{1}{E}(3Ax+2B)=\frac{\partial v}{\partial y} \Longrightarrow u=\frac{1}{E}(6Ax+2B)y+f_2(x) \\
+		\Downarrow \\
+		\gamma_{xy}=\frac{6}{E}Ay+f_2'(x)+f_1'(y)=0 \Longrightarrow f_2'(x)=-f_1'(y)-\frac{6}{E}Ay=\omega
+	\end{gather*}
+	\answerPar{解得：}
 	\begin{equation*}
-		\varepsilon_y=\frac{1}{E}\sigma_y=\frac{\partial u}{\partial y} \Longrightarrow u=\frac{1}{E}\sigma_yy+C(x)
+		\begin{cases}
+			u=-\frac{\mu}{E}(3Ax^2+2Bx)-\frac{3}{E}Ay^2-\omega y+\mu_0 \\
+			v=\frac{1}{E}(6Ax+2b)y+\omega x+v_0
+		\end{cases}	
 	\end{equation*}
-	\answerPar{根据题目$A$点的位移和转角均为零，代入$y=h$、$u=0$、$\omega=0$：}
-	\begin{equation*}
-		C(x)=-\frac{1}{E}\sigma_yh \Longrightarrow u=\frac{1}{E}\sigma_y(y-h)
-	\end{equation*}
+	\answerPar{根据题目$A$点的位移和转角均为零，代入$\begin{cases}x=0 \\ y=h\end{cases}$、$\begin{cases}u=0 \\ v=0\end{cases}$、$\begin{cases}\alpha=\frac{\partial v}{\partial x}=0 \\ \beta=\frac{\partial u}{\partial y}=0\end{cases}$，解得：}
+	\begin{gather*}
+		\begin{cases}
+			\omega & = -\frac{6}{E}Ah \\
+			u_0 & =-\frac{3}{E}Ah^2 \\
+			v_0 & =-\frac{2}{E}Bh
+		\end{cases}
+		\Longrightarrow
+		\begin{cases}
+			\omega & = \frac{3Fh}{4Eb^2} \\
+			u_0 & = \frac{3Fh^2}{8Eb^2} \\
+			v_0 & = \frac{Fh}{2Eb}
+		\end{cases}
+	\end{gather*}
 	\answerPar{故：}
-	\begin{equation*}
-%		\color{blue}
-		u=\frac{1}{E}\left(\frac{3F}{4b^2}+\frac{F}{2b}\right)(h-y)
-	\end{equation*}
+	\begin{align*}
+		u & = \frac{\mu F}{2Eb}\left(x+\frac{3}{4b}x^2\right)+\frac{3F}{8Eb^2}(h-y)^2 \\
+		v & =\frac{F}{2Eb}(h-y)\left(1+\frac{3}{2b}x\right)
+	\end{align*}
 
 \end{enumerate}
 
